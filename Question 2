@@ -1,0 +1,35 @@
+import java.util.Scanner;
+
+public class Main  {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter year: ");
+        int year = sc.nextInt();
+        System.out.print("Enter month (1-12): ");
+        int month = sc.nextInt();
+        System.out.print("Enter day: ");
+        int day = sc.nextInt();
+
+        boolean isLeap = (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
+        int daysInMonth;
+
+        switch (month) {
+            case 1: case 3: case 5: case 7: case 8: case 10: case 12:
+                daysInMonth = 31; break;
+            case 4: case 6: case 9: case 11:
+                daysInMonth = 30; break;
+            case 2:
+                daysInMonth = isLeap ? 29 : 28; break;
+            default:
+                System.out.println("Invalid month.");
+                return;
+        }
+
+        if (day >= 1 && day <= daysInMonth) {
+            System.out.println("Valid Date: " + year + "-" + month + "-" + day);
+        } else {
+            System.out.println("Invalid Date");
+        }
+    }
+}
