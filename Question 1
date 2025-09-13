@@ -1,27 +1,23 @@
-import java.util.Scanner;
+        sc.close();
 
-public class Main {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+        if (a <= 0 || b <= 0 || c <= 0) {
+            System.out.println("Invalid: side lengths must be positive.");
+            return;
+        }
 
-        System.out.print("Enter side 1: ");
-        int a = sc.nextInt();
-        System.out.print("Enter side 2: ");
-        int b = sc.nextInt();
-        System.out.print("Enter side 3: ");
-        int c = sc.nextInt();
+        boolean isTriangle = (a + b > c) && (a + c > b) && (b + c > a);
 
-        // Triangle inequality check
-        if (a + b > c && a + c > b && b + c > a) {
-            if (a == b && b == c) {
-                System.out.println("Equilateral Triangle");
-            } else if (a == b || b == c || a == c) {
-                System.out.println("Isosceles Triangle");
-            } else {
-                System.out.println("Scalene Triangle");
-            }
+        if (!isTriangle) {
+            System.out.println("Not a valid triangle.");
+            return;
+        }
+
+        if (a == b && b == c) {
+            System.out.println("Valid: Equilateral triangle.");
+        } else if (a == b || a == c || b == c) {
+            System.out.println("Valid: Isosceles triangle.");
         } else {
-            System.out.println("Not a valid triangle");
+            System.out.println("Valid: Scalene triangle.");
         }
     }
 }
