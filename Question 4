@@ -1,0 +1,20 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter student's age (years): ");
+        int age = sc.nextInt();
+        System.out.print("Enter student's GPA (0.0 - 4.0): ");
+        double gpa = sc.nextDouble();
+        sc.close();
+
+        if (age >= 18 && gpa >= 3.0) {
+            System.out.println("Eligible for Scholarship");
+        } else if (gpa >= 3.5 && age < 18) {
+            System.out.println("Special Scholarship Consideration");
+        } else {
+            System.out.println("Not Eligible");
+        }
+    }
+}
