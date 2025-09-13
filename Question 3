@@ -1,0 +1,51 @@
+import java.util.Locale;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Choose a product category (type exactly one):");
+        System.out.println("1) Electronics\n2) Clothing\n3) Books");
+        System.out.print("Your choice: ");
+        String input = sc.nextLine().trim().toLowerCase(Locale.ROOT);
+        sc.close();
+
+        String category;
+        if (input.equals("1") || input.equals("electronics")) {
+            category = "Electronics";
+        } else if (input.equals("2") || input.equals("clothing")) {
+            category = "Clothing";
+        } else if (input.equals("3") || input.equals("books")) {
+            category = "Books";
+        } else {
+            System.out.println("Unknown category.");
+            return;
+        }
+
+        double basePrice;
+        double discountRate;
+
+        switch (category) {
+            case "Electronics":
+                basePrice = 999.99;
+                discountRate = 0.10;
+                break;
+            case "Clothing":
+                basePrice = 79.99;
+                discountRate = 0.20;
+                break;
+            case "Books":
+                basePrice = 24.99;
+                discountRate = 0.05;
+                break;
+            default:
+                System.out.println("Unknown category.");
+                return;
+        }
+
+        double finalPrice = basePrice * (1 - discountRate);
+        System.out.printf("%s base price: $%.2f%n", category, basePrice);
+        System.out.printf("Discount applied: %.0f%%%n", discountRate * 100);
+        System.out.printf("Final price: $%.2f%n", finalPrice);
+    }
+}
